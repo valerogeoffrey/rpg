@@ -12,16 +12,33 @@ class Engine
         @rooms               = {
             :r1 => {
                 :mooves  => {
-                    :forward => :r2
+                    :forward => :r2,
+                    :left    => :r4
                 },
                 :actions => [:A1]
             },
             :r2 => {
                 :mooves  => {
-                    :back => :r1,
-                    :forward  => :r5,
+                    :back    => :r4,
+                    :forward => :r5,
+                    :left    => :r3,
                 },
                 :actions => [:A2]
+            },
+            :r3 => {
+                :mooves  => {
+                    :right => :r2,
+                    :back  => :r4,
+                },
+                :actions => [:A3]
+            },
+            :r4 => {
+                :mooves  => {
+                    :forward  => :r2,
+                    :right => :r5,
+                    :back  => :r3,
+                },
+                :actions => [:A4]
             },
             :r5 => {
                 :mooves  => {},
@@ -31,21 +48,7 @@ class Engine
 
         @extra_map =
             {
-                :r3 => {
-                    :mooves  => {
-                        :right  => :r2,
-                        :back => :r4,
-                    },
-                    :actions => [:A3]
-                },
-                :r4 => {
-                    :mooves  => {
-                        :left  => :r1,
-                        :right  => :r5,
-                        :back => :r3,
-                    },
-                    :actions => [:A4]
-                },
+
             }
     end
 
