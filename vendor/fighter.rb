@@ -5,8 +5,8 @@ class Fighter
     @@instance
 
     def initialize()
-        @hero = Personnage::Wizzard.new('Harry potter', 50)
-        @mvp  = Personnage::Wizzard.new('Voldemort', 20)
+        @hero = Characters::Wizzard.new('Harry potter', 50)
+        @mvp  = Characters::Wizzard.new('Voldemort', 20)
         @spell  = {
             avada_kedavra: 10,
             expeliarmus:   15,

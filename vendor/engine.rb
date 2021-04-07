@@ -15,7 +15,7 @@ class Engine
                     :forward => :r2,
                     :left    => :r4
                 },
-                :actions => [:A1]
+                :actions => [:Action1]
             },
             :r2 => {
                 :mooves  => {
@@ -23,14 +23,14 @@ class Engine
                     :forward => :r5,
                     :left    => :r3,
                 },
-                :actions => [:A2]
+                :actions => [:Action2]
             },
             :r3 => {
                 :mooves  => {
                     :right => :r2,
                     :back  => :r4,
                 },
-                :actions => [:A3]
+                :actions => [:Action3]
             },
             :r4 => {
                 :mooves  => {
@@ -38,11 +38,11 @@ class Engine
                     :right => :r5,
                     :back  => :r3,
                 },
-                :actions => [:A4]
+                :actions => [:Action4]
             },
             :r5 => {
                 :mooves  => {},
-                :actions => [:A5]
+                :actions => [:Action5]
             },
         }
 
@@ -112,7 +112,7 @@ class Engine
 
     def get_action_class(actions)
         actions_list = []
-        actions.each { |a| actions_list << Object.const_get("Actions::#{a.to_s.upcase}").new }
+        actions.each { |a| actions_list << Object.const_get("Actions::#{a.to_s}").new }
         actions_list
     end
 end

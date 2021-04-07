@@ -28,16 +28,16 @@ module Test
             raise("mvp not dead") if !obj.mvp_is_dead?
 
             tmp_var = obj.hero_attack
-            raise("Not god object Personnage::Wizzard") if tmp_var.class.name != "Personnage::Wizzard"
+            raise("Not god object Characters::Wizzard") if tmp_var.class.name != "Characters::Wizzard"
 
             tmp_var = obj.mvp_attack
-            raise("Not god object Personnage::Wizzard") if tmp_var.class.name != "Personnage::Wizzard"
+            raise("Not god object Characters::Wizzard") if tmp_var.class.name != "Characters::Wizzard"
 
             tmp_var = obj.get_mvp
-            raise("Not god object Personnage::Wizzard") if tmp_var.class.name != "Personnage::Wizzard"
+            raise("Not god object Characters::Wizzard") if tmp_var.class.name != "Characters::Wizzard"
 
             tmp_var = obj.get_hero
-            raise("Not god object Personnage::Wizzard") if tmp_var.class.name != "Personnage::Wizzard"
+            raise("Not god object Characters::Wizzard") if tmp_var.class.name != "Characters::Wizzard"
 
             # ////////////////////////////////////////////////////////////////////////////////////////////
             # Test FIGTHER instance ///////////////////////////////////////////////////////////////////////
@@ -51,10 +51,10 @@ module Test
             raise("Not god points process mvp #{tmp_var}") if !tmp_var
 
             tmp_var = fighter.get_mvp
-            raise("Not god object Personnage::Wizzard") if tmp_var.class.name != "Personnage::Wizzard"
+            raise("Not god object Characters::Wizzard") if tmp_var.class.name != "Characters::Wizzard"
 
             tmp_var = fighter.get_hero
-            raise("Not god object Personnage::Wizzard") if tmp_var.class.name != "Personnage::Wizzard"
+            raise("Not god object Characters::Wizzard") if tmp_var.class.name != "Characters::Wizzard"
 
             tmp_var = Fighter.instance
             raise("Not god object Fighter") if tmp_var.class.name != "Fighter"
@@ -62,8 +62,8 @@ module Test
             # ////////////////////////////////////////////////////////////////////////////////////////////
             # Test WIZARD instance ///////////////////////////////////////////////////////////////////////
             # ////////////////////////////////////////////////////////////////////////////////////////////
-            tmp_var = Personnage::Wizzard.new("test",100)
-            raise("Not god object Personnage::Wizzard") if tmp_var.class.name != "Personnage::Wizzard"
+            tmp_var = Characters::Wizzard.new("test",100)
+            raise("Not god object Characters::Wizzard") if tmp_var.class.name != "Characters::Wizzard"
             raise("bad point access") if tmp_var.points != 100
             raise("bad name access") if tmp_var.name != "test"
 
@@ -118,9 +118,10 @@ module Test
             var = tmp_var.get_room
             raise("bad get room process -- #{var.class.name}") if var.class.name == "Rooms::R1"
 
-            var = tmp_var.get_action_class(['A1'])
+            var = tmp_var.get_action_class(['Action1'])
+
             raise("bad action process -- #{var.class.name}") if var.class.name != "Array"
-            raise("bad action process -- #{var.first.class.name}") if var.first.class.name != "Actions::A1"
+            raise("bad action process -- #{var.first.class.name}") if var.first.class.name != "Actions::Action1"
 
             # ////////////////////////////////////////////////////////////////////////////////////////////
             # Test ROOM instance ///////////////////////////////////////////////////////////////////////
@@ -134,16 +135,16 @@ module Test
             raise("bad name room  access super  -- #{var.get_name}") if var.get_name != "Common room - Gryffondor"
             raise("bad description room  access super -- #{var.get_description}") if var.get_description != "You are in the east wing, in the dungeon of spells."
 
-            var_action = var.set_actions([Actions::A1.new])
+            var_action = var.set_actions([Actions::Action1.new])
             raise("bad action process -- #{var_action.get_actions.class.name}") if var_action.get_actions.class.name != "Array"
-            raise("bad action process -- #{var_action.get_actions.first.class.name}") if var_action.get_actions.first.class.name != "Actions::A1"
+            raise("bad action process -- #{var_action.get_actions.first.class.name}") if var_action.get_actions.first.class.name != "Actions::Action1"
 
 
             # ////////////////////////////////////////////////////////////////////////////////////////////
             # Test ACTIONS instance //////////////////////////////////////////////////////////////////////
             # ////////////////////////////////////////////////////////////////////////////////////////////
 
-            var = Actions::A1.new
+            var = Actions::Action1.new
             raise("bad action question access -- #{var.get_question}") if var.get_question != " >> 1 + 1 = "
             raise("bad action response access -- #{var.get_response}") if var.get_response != 2
 
