@@ -46,6 +46,8 @@ while in_game
 
                 engine.set_position(:r1).get_room
                 in_last_fight             = false
+
+                # reset heros points for try again
                 fight_manager.hero.points = 50
                 break
             end
@@ -60,7 +62,6 @@ while in_game
                 in_last_fight = false
                 break
             else
-
                 # Le hero attack
                 mvp = fight_manager.hero_attack
 
