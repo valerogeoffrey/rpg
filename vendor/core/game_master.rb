@@ -7,8 +7,12 @@ class GameMaster
   attr_reader :final_fight
 
   def initialize(engine, fight_master)
+    differ_initialize
     @engine       = engine
     @fight_master = fight_master
+  end
+
+  def differ_initialize
     @rooms        = {}
     @in_game      = true
     @moove        = ""
@@ -32,40 +36,36 @@ class GameMaster
   end
 
   def play
-    
     init_party
 
     moove_on
       .get_next_room
       .check_step_and_make_action
 
-    if engine.is_final_room?
-      fight_master.init_engine(engine).start
-    end
-
+      @fight_master.init_engine(@engine).start if @engine.is_final_room?
   end
 
   def init_party
-    engine.init_scenario
+    @engine.init_scenario
     @moove = STDIN.gets.chomp
     write_separatation_in_console
   end
 
   def check_step_and_make_action
-    if engine.is_not_in_final_room?
+    if @engine.is_not_in_final_room?
       @room.puts_description
       @room.execute_actions
-      puts "Where do you want to go ? ( #{engine.get_moves} )"
+      puts "Where do you want to go ? ( #{@engine.get_moves} )"
     end
   end
 
   def moove_on
-    @room_name = engine.get_next_room if engine.set_moove(@moove).is_legal_moove?
+    @room_name = @engine.get_next_room if @engine.set_moove(@moove).is_legal_moove?
     self
   end
 
   def get_next_room
-    @room = engine.set_position(room_name).get_obj_room
+    @room = @engine.set_position(room_name).get_obj_room
     self
   end
 

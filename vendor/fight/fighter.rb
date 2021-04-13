@@ -26,7 +26,7 @@ class Fighter
     def attack(target)
         @target = target
         points           = spells[spells.keys.sample]
-        target.points = target.points - points
+        target.character.points = target.character.points - points
 
         target
     end

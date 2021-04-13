@@ -18,6 +18,9 @@ class Feeder
     room4   = Rooms::Concrete::Room4.data
     action4 = Actions::Concrete::Action1.data
 
+    room5   = Rooms::Concrete::Room5.data
+    action4 = Actions::Concrete::Action1.data
+
     [] << [room1, action1] << [room2, action2] << [room3, action3] << [room4, action4]
   end
 end

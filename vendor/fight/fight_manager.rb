@@ -13,9 +13,7 @@ class FightManager
         hero.points <= 0
     end
 
-    def mvp_is_dead?
-        mvp.points <= 0
-    end
+
 
     def hero_attack
         fighter.attack(:mvp).mvp
