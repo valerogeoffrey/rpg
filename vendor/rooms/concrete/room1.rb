@@ -9,6 +9,7 @@ module Rooms::Concrete
         :is_last_room  => false,
         :moves         => {
           :forward => :pouffsouffle,
+          :right => :agrid,
         },
       }
     end

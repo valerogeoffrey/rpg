@@ -31,5 +31,13 @@ module Actions
     def is_good_answer?
       user_response == reponse
     end
+
+    def execute_action
+      puts ask_question
+      response_action = STDIN.gets.chomp.to_i
+      good_response   = set_response(response_action).is_good_answer?
+      puts @disclaimer if good_response
+      !good_response
+    end
   end
 end

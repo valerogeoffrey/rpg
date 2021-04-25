@@ -8,8 +8,8 @@ module Rooms::Concrete
         :is_first_room => false,
         :is_last_room  => false,
         :moves         => {
-          :back => :serpentard,
-          :left => :poufssoufle
+          :left => :poufssoufle,
+          :back => :gryffondor,
         },
       }
     end

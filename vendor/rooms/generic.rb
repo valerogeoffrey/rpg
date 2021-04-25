@@ -29,18 +29,13 @@ module Rooms
     end
 
     def link_moves(moves)
-
     end
 
     def execute_actions
       @actions.each do |action|
-        is_no_good_for_next = true
-        while is_no_good_for_next
-          puts action.ask_question
-          response_action = STDIN.gets.chomp.to_i
-          good_response   = action.set_response(response_action).is_good_answer?
-          puts action.disclaimer if good_response
-          is_no_good_for_next = !good_response
+        have_not_pass_action = true
+        while have_not_pass_action
+          have_not_pass_action = action.execute_action
         end
       end
     end

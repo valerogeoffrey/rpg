@@ -16,9 +16,12 @@ class Engine
     @position            = :r1
   end
 
-  def set_map(rooms)
+  def rooms=(rooms)
     @rooms = rooms
-    self
+  end
+
+  def position=(position)
+    @position = position
   end
 
   def set_position(position)
@@ -52,7 +55,6 @@ class Engine
   end
 
   def set_moove(moove)
-    puts "----------------------------------------------".inspect
     @moove = moove.to_sym
     self
   end
